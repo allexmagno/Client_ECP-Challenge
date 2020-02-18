@@ -1,0 +1,31 @@
+plugins {
+    // Gradle Shadow plugin
+    id 'com.github.johnrengelman.shadow' version '4.0.0'
+    id 'java'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'main.Main'
+    }
+}
+group 'ECP'
+version '1.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.slf4j', name:'slf4j-api', version: '1.7.2'
+    compile group: 'ch.qos.logback', name:'logback-classic', version: '1.0.9'
+    compile group: 'ch.qos.logback', name:'logback-core', version: '1.0.9'
+    compile group: 'com.sun.jersey', name: 'jersey-client', version: '1.9.1'
+}
+configurations.all {
+    exclude group: "commons-logging", module: "commons-logging"
+}
+
